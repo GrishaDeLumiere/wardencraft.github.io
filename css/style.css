@@ -1216,48 +1216,6 @@ html {
     transform: scale(1.2);
 }
 
-/* Кнопка VK */
-.modal-social-btn.vk {
-    background: rgba(255, 51, 51, 0.1);
-    border-color: rgba(255, 51, 51, 0.3);
-    color: #ff4444;
-    box-shadow: 0 0 20px rgba(255, 51, 51, 0.1);
-}
-
-.modal-social-btn.vk:hover {
-    background: rgba(255, 51, 51, 0.2);
-    border-color: #ff3333;
-    box-shadow: 0 0 30px rgba(255, 51, 51, 0.3), 0 0 60px rgba(255, 51, 51, 0.1);
-    transform: translateY(-2px);
-    color: #ff5555;
-}
-
-.modal-social-btn.vk:active {
-    transform: translateY(0);
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
-}
-
-/* Кнопка Telegram */
-.modal-social-btn.telegram {
-    background: rgba(0, 136, 204, 0.1);
-    border-color: rgba(0, 136, 204, 0.3);
-    color: #0099dd;
-    box-shadow: 0 0 20px rgba(0, 136, 204, 0.1);
-}
-
-.modal-social-btn.telegram:hover {
-    background: rgba(0, 136, 204, 0.2);
-    border-color: #0088cc;
-    box-shadow: 0 0 30px rgba(0, 136, 204, 0.3), 0 0 60px rgba(0, 136, 204, 0.1);
-    transform: translateY(-2px);
-    color: #00aaff;
-}
-
-.modal-social-btn.telegram:active {
-    transform: translateY(0);
-    box-shadow: 0 0 15px rgba(0, 136, 204, 0.2);
-}
-
 /* ==========================================
    ЭКСТРА-ВИЗУАЛ: CANVAS ФОН
    ========================================== */
@@ -1331,4 +1289,79 @@ html {
     background: #ff4400;
     z-index: 9999;
     transition: width 0.1s ease-out;
+}
+
+/* ================== ТАБЛИЦЫ В НОВОСТЯХ ================== */
+.news-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.news-table thead th {
+    background: rgba(255, 51, 51, 0.1);
+    color: #ff3333;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid rgba(255, 51, 51, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.news-table thead th:last-child {
+    border-right: none;
+}
+
+.news-table tbody td {
+    padding: 14px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.news-table tbody td:last-child {
+    border-right: none;
+}
+
+.news-table tbody tr:hover td {
+    background: rgba(255, 51, 51, 0.05);
+}
+
+.news-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.news-table tbody td strong {
+    color: #ff3333;
+    font-weight: 700;
+}
+
+/* ================== ИЗОБРАЖЕНИЯ В НОВОСТЯХ ================== */
+.modal-body .news-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 25px 0;
+    border: 1px solid rgba(255, 51, 51, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-body .news-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.15);
+}
+
+.modal-body .news-image-caption {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: -20px;
+    margin-bottom: 25px;
 }

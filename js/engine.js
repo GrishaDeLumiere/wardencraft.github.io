@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statsSection = document.querySelector('.stats-wrapper');
     if (statsSection) statsObserver.observe(statsSection);
 
-    // --- 4. ПАРАЛЛАКС ДЛЯ HERO v---
+    // --- 4. ПАРАЛЛАКС ДЛЯ HERO ---
     const heroSection = document.getElementById('hero');
     const heroContent = document.querySelector('.hero-content');
     if (heroSection && heroContent) {
@@ -327,24 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     modalTitle.innerText = articleData.title;
                     modalTag.innerText = `${dateFormatted} — ${articleData.tag}`;
-                    let fullContent = articleData.content;
-                    if (articleData.externalLink || articleData.telegramLink) {
-                        fullContent += `
-    <div class="modal-social-links">
-        ${articleData.externalLink ? `
-        <a href="${articleData.externalLink}" target="_blank" class="modal-social-btn vk">
-            <i class="fab fa-vk"></i> ЧИТАТЬ В VK
-        </a>` : ''}
-        ${articleData.telegramLink ? `
-        <a href="${articleData.telegramLink}" target="_blank" class="modal-social-btn telegram">
-            <i class="fab fa-telegram"></i> ЧИТАТЬ В TELEGRAPH
-        </a>` : ''}
-    </div>
-    `;
-                    }
-
-                    modalBody.innerHTML = fullContent;
-
+                    modalBody.innerHTML = articleData.content;
                     articleModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
