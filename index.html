@@ -22,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 
 <body>
@@ -132,15 +133,42 @@
     <section class="rarity-section reveal">
       <h2 class="section-title">СИСТЕМА РЕДКОСТЕЙ</h2>
       <div class="rarity-list">
-        <div class="rarity-card rarity-poor"><div class="rarity-icon"><i class="fas fa-bug"></i></div><div><span class="rarity-name">Убогое</span><span class="rarity-range">Уровень 0-3</span></div></div>
-        <div class="rarity-card rarity-common"><div class="rarity-icon"><i class="fas fa-shield-alt"></i></div><div><span class="rarity-name">Обычные</span><span class="rarity-range">Уровень 4-10</span></div></div>
-        <div class="rarity-card rarity-uncommon"><div class="rarity-icon"><i class="fas fa-leaf"></i></div><div><span class="rarity-name">Необычные</span><span class="rarity-range">Уровень 11-15</span></div></div>
-        <div class="rarity-card rarity-rare"><div class="rarity-icon"><i class="fas fa-star"></i></div><div><span class="rarity-name">Редкие</span><span class="rarity-range">Уровень 16-49</span></div></div>
-        <div class="rarity-card rarity-epic"><div class="rarity-icon"><i class="fas fa-crown"></i></div><div><span class="rarity-name">Эпические</span><span class="rarity-range">Уровень 61-65</span></div></div>
-        <div class="rarity-card rarity-legendary"><div class="rarity-icon"><i class="fas fa-skull"></i></div><div><span class="rarity-name">Легендарные</span><span class="rarity-range">Уровень 66-100</span></div></div>
-        <div class="rarity-card rarity-mythic"><div class="rarity-icon"><i class="fas fa-dragon"></i></div><div><span class="rarity-name">Мифические</span><span class="rarity-range">Уровень 101-120</span></div></div>
-        <div class="rarity-card rarity-ancient"><div class="rarity-icon"><i class="fas fa-hourglass-half"></i></div><div><span class="rarity-name">Древние</span><span class="rarity-range">Уровень 121-176</span></div></div>
-        <div class="rarity-card rarity-divine"><div class="rarity-icon"><i class="fas fa-ring"></i></div><div><span class="rarity-name">Божественные</span><span class="rarity-range">Уровень 300+</span></div></div>
+        <div class="rarity-card rarity-poor">
+          <div class="rarity-icon"><i class="fas fa-bug"></i></div>
+          <div><span class="rarity-name">Убогое</span><span class="rarity-range">Уровень 0-3</span></div>
+        </div>
+        <div class="rarity-card rarity-common">
+          <div class="rarity-icon"><i class="fas fa-shield-alt"></i></div>
+          <div><span class="rarity-name">Обычные</span><span class="rarity-range">Уровень 4-10</span></div>
+        </div>
+        <div class="rarity-card rarity-uncommon">
+          <div class="rarity-icon"><i class="fas fa-leaf"></i></div>
+          <div><span class="rarity-name">Необычные</span><span class="rarity-range">Уровень 11-15</span></div>
+        </div>
+        <div class="rarity-card rarity-rare">
+          <div class="rarity-icon"><i class="fas fa-star"></i></div>
+          <div><span class="rarity-name">Редкие</span><span class="rarity-range">Уровень 16-49</span></div>
+        </div>
+        <div class="rarity-card rarity-epic">
+          <div class="rarity-icon"><i class="fas fa-crown"></i></div>
+          <div><span class="rarity-name">Эпические</span><span class="rarity-range">Уровень 61-65</span></div>
+        </div>
+        <div class="rarity-card rarity-legendary">
+          <div class="rarity-icon"><i class="fas fa-skull"></i></div>
+          <div><span class="rarity-name">Легендарные</span><span class="rarity-range">Уровень 66-100</span></div>
+        </div>
+        <div class="rarity-card rarity-mythic">
+          <div class="rarity-icon"><i class="fas fa-dragon"></i></div>
+          <div><span class="rarity-name">Мифические</span><span class="rarity-range">Уровень 101-120</span></div>
+        </div>
+        <div class="rarity-card rarity-ancient">
+          <div class="rarity-icon"><i class="fas fa-hourglass-half"></i></div>
+          <div><span class="rarity-name">Древние</span><span class="rarity-range">Уровень 121-176</span></div>
+        </div>
+        <div class="rarity-card rarity-divine">
+          <div class="rarity-icon"><i class="fas fa-ring"></i></div>
+          <div><span class="rarity-name">Божественные</span><span class="rarity-range">Уровень 300+</span></div>
+        </div>
       </div>
     </section>
 
@@ -195,7 +223,7 @@
   <section class="roadmap-section" id="roadmap-section">
     <h2 class="section-title reveal">ДОРОЖНАЯ КАРТА</h2>
     <p class="roadmap-desc reveal">Проект постоянно масштабируется. Мы только начали.</p>
-    
+
     <!-- Сюда JS сам сгенерирует Roadmap -->
     <div class="timeline" id="roadmap-container"></div>
   </section>
@@ -204,7 +232,7 @@
   <section class="news-section" id="news-section">
     <div class="news-container">
       <h2 class="section-title reveal">ДНЕВНИКИ РАЗРАБОТКИ</h2>
-      
+
       <!-- Сюда JS сам сгенерирует карточки новостей -->
       <div class="news-grid" id="news-grid-container"></div>
     </div>
