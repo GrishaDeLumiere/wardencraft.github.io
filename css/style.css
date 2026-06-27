@@ -535,3 +535,575 @@ body {
         transform: translate3d(4px, 0, 0);
     }
 }
+
+/* ================== VULKAN ENGINE СЕКЦИЯ ================== */
+.vulkan-section {
+    background: linear-gradient(180deg, #050505 0%, #110000 50%, #050505 100%);
+    padding: 100px 20px;
+    border-top: 1px solid rgba(255, 51, 51, 0.1);
+    border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+}
+
+.vulkan-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.vulkan-red {
+    color: #ff3333;
+    text-shadow: 0 0 15px rgba(255, 51, 51, 0.5);
+    font-weight: 900;
+}
+
+.vulkan-desc {
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* Статистика (FPS) */
+.stats-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: rgba(255, 51, 51, 0.05);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    padding: 30px 40px;
+    border-radius: 4px;
+    min-width: 250px;
+    box-shadow: inset 0 0 20px rgba(255, 51, 51, 0.02);
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.stat-number .plus {
+    color: #ff3333;
+}
+
+.stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+/* Технологии (Карточки) */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.tech-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.tech-card:hover {
+    border-color: rgba(255, 51, 51, 0.4);
+    transform: translateY(-5px);
+    background: rgba(255, 51, 51, 0.02);
+}
+
+.tech-icon {
+    font-size: 36px;
+    color: #ff3333;
+    margin-bottom: 20px;
+}
+
+.tech-card h3 {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.tech-card p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+}
+
+.nav-link.vulkan-link {
+    color: #ff3333 !important;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.4);
+}
+
+/* ================== УЛУЧШЕНИЯ ТИПОГРАФИКИ И HERO ================== */
+h1 {
+    font-family: 'Cinzel', 'Montserrat', serif;
+    font-size: 72px;
+    letter-spacing: 15px;
+    text-shadow: 0 0 30px rgba(255, 51, 51, 0.4);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    background: rgba(255, 51, 51, 0.1);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
+}
+
+.hero-section {
+    background-attachment: fixed;
+    /* Эффект параллакса */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ================== СЕКЦИЯ VULKAN ================== */
+.vulkan-logo {
+    height: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.6));
+    animation: pulseLogo 3s infinite alternate;
+}
+
+@keyframes pulseLogo {
+    0% {
+        filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.4));
+        transform: scale(1);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 30px rgba(255, 51, 51, 0.8));
+        transform: scale(1.05);
+    }
+}
+
+/* ================== ДОРОЖНАЯ КАРТА (ROADMAP) ================== */
+.roadmap-section {
+    padding: 100px 20px;
+    background: #020202;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.roadmap-desc {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 60px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 50px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -40px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #333;
+    border: 2px solid #000;
+    z-index: 2;
+    transition: 0.3s ease;
+}
+
+.timeline-item.completed .timeline-dot {
+    background: #ff3333;
+    box-shadow: 0 0 15px #ff3333;
+}
+
+.timeline-item.active .timeline-dot {
+    background: #ffffff;
+    box-shadow: 0 0 15px #ffffff;
+}
+
+.timeline-content h3 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.timeline-item.completed .timeline-content h3 {
+    color: #ff3333;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ================== КНОПКИ СОЦСЕТЕЙ (CTA) ================== */
+.cta-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.cta-social-btn {
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.cta-social-btn:hover {
+    transform: translateY(-3px);
+}
+
+.cta-social-btn.discord:hover {
+    background: #5865F2;
+    border-color: #5865F2;
+}
+
+.cta-social-btn.vk:hover {
+    background: #0077FF;
+    border-color: #0077FF;
+}
+
+.cta-social-btn.tg:hover {
+    background: #229ED9;
+    border-color: #229ED9;
+}
+
+
+/* ================== СЕКЦИЯ НОВОСТЕЙ ================== */
+.news-section {
+    padding: 100px 20px;
+    background: #050505;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.news-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    border-color: rgba(255, 51, 51, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.news-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-img {
+    transform: scale(1.05);
+}
+
+.news-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(10, 0, 0, 0.8) 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.news-date {
+    font-size: 10px;
+    color: #ff3333;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.news-content h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.news-content p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex: 1;
+}
+
+.read-more-btn {
+    align-self: flex-start;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.news-card:hover .read-more-btn {
+    background: #ff3333;
+    border-color: #ff3333;
+}
+
+.hidden-article {
+    display: none;
+}
+
+/* ================== МОДАЛЬНОЕ ОКНО (ЧИТАЛКА) ================== */
+.article-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.article-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.modal-box {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 51, 51, 0.3);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.article-modal.active .modal-box {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    color: #ff3333;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 40px 40px 20px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.modal-header .modal-date {
+    font-size: 12px;
+    color: #ff3333;
+    letter-spacing: 3px;
+}
+
+.modal-body {
+    padding: 30px 40px;
+    overflow-y: auto;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* Стилизация текста внутри модалки */
+.modal-body h3,
+.modal-body h4 {
+    color: #fff;
+    margin: 30px 0 15px 0;
+    letter-spacing: 1px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal-body ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.modal-body li {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-body strong {
+    color: #ff3333;
+}
+
+/* Кастомный скроллбар для модалки */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 51, 51, 0.5);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #ff3333;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020202;
+    /* Глубокий черный */
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 51, 51, 0.3);
+    /* Легкий контур Vulkan */
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff3333;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.8);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ff3333 #020202;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.timeline-item.active .timeline-dot {
+    background: #ffffff;
+    border-color: #fff;
+    animation: pulseDot 2s infinite;
+}
+
+.timeline-item.completed .timeline-dot {
+    background: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 0 0 15px #ff3333;
+}

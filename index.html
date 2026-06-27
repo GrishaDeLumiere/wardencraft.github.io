@@ -3,29 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="WardenCraft — фэнтезийная MMORPG на собственном движке. Закрытая разработка. Vulkan, OpenGL, самописный сервер.">
-  <meta name="keywords" content="WardenCraft, MMORPG, фэнтези, игра, Vulkan, OpenGL, самописный движок">
+  <meta name="description" content="WardenCraft — хардкорная фэнтезийная MMORPG. Тотальный GPU-Driven рендер на чистом Vulkan, тысячи FPS и мир без загрузок.">
+  <meta name="keywords" content="WardenCraft, MMORPG, фэнтези, игра, Vulkan, самописный движок, GPU-Driven Rendering, хардкор">
   <meta name="robots" content="index, follow">
   <meta name="author" content="WardenCraft Team">
   <link rel="canonical" href="https://grishadelumiere.github.io/wardencraft.github.io/">
 
-  <!-- Open Graph для соцсетей -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://grishadelumiere.github.io/wardencraft.github.io/">
-  <meta property="og:title" content="WardenCraft - Официальный сайт">
-  <meta property="og:description" content="Фэнтезийная MMORPG с глубоким миром, динамичной боевкой и хардкорными данжами на собственном движке.">
-  <meta property="og:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/3.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WardenCraft - Официальный сайт">
-  <meta name="twitter:description" content="Фэнтезийная MMORPG на самописном движке (Vulkan/OpenGL 4.6).">
-  <meta name="twitter:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/3.jpg">
+  <meta property="og:title" content="WardenCraft - Хардкорная MMORPG нового поколения">
+  <meta property="og:description" content="Полностью самописный движок на Vulkan. Эпические битвы без просадок FPS, сложная экономика и беспощадные данжи.">
+  <meta property="og:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/0.jpg">
 
   <title>WardenCraft - Официальный сайт</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -39,10 +33,11 @@
         <a href="#" class="logo-link">WARDENCRAFT</a>
       </div>
       <div class="nav-links">
+        <a href="#vulkan-section" class="nav-link vulkan-link">ТЕХНОЛОГИИ</a>
         <a href="#features-section" class="nav-link">ОБ ИГРЕ</a>
         <a href="#classes-section" class="nav-link">КЛАССЫ</a>
-        <a href="#systems-section" class="nav-link">СИСТЕМЫ</a>
-        <a href="https://vk.com/@wardencraft" target="_blank" class="nav-link">ДНЕВНИКИ РАЗРАБОТКИ</a>
+        <a href="#roadmap-section" class="nav-link">ROADMAP</a>
+        <a href="#news-section" class="nav-link">ДНЕВНИКИ</a>
       </div>
       <div class="nav-right">
         <div class="nav-social">
@@ -54,110 +49,98 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <div class="hero-section">
+  <!-- HERO SECTION (С Параллаксом) -->
+  <div class="hero-section" id="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content reveal">
+      <div class="hero-badge">ЗАКРЫТАЯ РАЗРАБОТКА</div>
       <h1>WARDENCRAFT</h1>
-      <p class="hero-subtitle">Фэнтезийная MMORPG с глубоким миром и захватывающими приключениями</p>
+      <p class="hero-subtitle">Выкуй свою судьбу в мире, где каждая ошибка стоит жизни.<br>MMORPG с прямым управлением железом.</p>
 
       <div class="action-container">
-        <button class="launcher-button action-btn">НАЧАТЬ ПУТЕШЕСТВИЕ</button>
+        <button class="launcher-button action-btn">ПРИСОЕДИНИТЬСЯ К ЗБТ</button>
         <span class="error-span"></span>
       </div>
     </div>
   </div>
 
-  <!-- MAIN CONTENT (ФИЧИ) -->
-  <div class="main-content" id="features-section">
-    <section class="game-features">
-      <h2 class="section-title reveal">ОСОБЕННОСТИ ДВИЖКА И ИГРЫ</h2>
+  <!-- VULKAN ENGINE SHOWCASE -->
+  <section class="vulkan-section" id="vulkan-section">
+    <div class="vulkan-container">
+      <img src="images/vulkan.png" alt="Vulkan API" class="vulkan-logo reveal">
+      <h2 class="section-title reveal">АБСОЛЮТНАЯ ВЛАСТЬ НАД ЖЕЛЕЗОМ</h2>
+      <p class="vulkan-desc reveal">Мы отказались от компромиссов и уничтожили legacy-код. WardenCraft работает на полностью самописном GPU-Driven конвейере. Ваша видеокарта рисует мир напрямую, обеспечивая безупречную плавность в самых массовых сражениях.</p>
 
-      <div class="feature-block reveal">
-        <div class="feature-text">
-          <h3>САМОПИСНАЯ АРХИТЕКТУРА</h3>
-          <p>Никакого легаси. Клиент строго отделен от сервера. Рендер на базе OpenGL Core 4.6 и Vulkan. Многопоточная обработка чанков, статические дескрипторы и перманентный маппинг UBO.</p>
+      <div class="stats-wrapper reveal">
+        <div class="stat-card">
+          <div class="stat-number"><span class="counter" data-target="3000">0</span><span class="plus">+</span></div>
+          <div class="stat-label">FPS (Мин. настройки)</div>
         </div>
-        <div class="feature-image" style="background-image: url('images/1.jpg');"></div>
-      </div>
-
-      <div class="feature-block reverse reveal">
-        <div class="feature-text">
-          <h3>ДИНАМИЧНЫЕ СРАЖЕНИЯ</h3>
-          <p>Напряженные поединки, где важны тайминг и позиционирование. Блоки, уклонения и атаки. Уникальные боссы, меняющие тактику в зависимости от числа игроков.</p>
+        <div class="stat-card">
+          <div class="stat-number"><span class="counter" data-target="1000">0</span><span class="plus">+</span></div>
+          <div class="stat-label">FPS (Макс. прорисовка)</div>
         </div>
-        <div class="feature-image" style="background-image: url('images/2.jpg');"></div>
+        <div class="stat-card">
+          <div class="stat-number"><span class="counter" data-target="0">100</span><span class="plus">%</span></div>
+          <div class="stat-label">Без узких мест ЦП</div>
+        </div>
       </div>
-    </section>
-  </div>
 
-  <!-- КЛАССЫ -->
-  <section class="classes-section" id="classes-section">
-    <h2 class="section-title reveal">ПУТЬ ВОИНА</h2>
-    <div class="classes-grid">
-      <div class="class-card reveal">
-        <i class="fas fa-shield-alt class-icon"></i>
-        <h3>ПАЛАДИН</h3>
-        <span class="class-role">СТРАЖ СВЕТА</span>
-        <p>Баланс защиты и поддержки. Носитель Амулета Света.</p>
-      </div>
-      <div class="class-card reveal" style="transition-delay: 0.1s;">
-        <i class="fas fa-fire class-icon"></i>
-        <h3>ВОЛШЕБНИК</h3>
-        <span class="class-role">ПОВЕЛИТЕЛЬ СТИХИЙ</span>
-        <p>Магия огня, льда и молний. Зависит от маны и таймингов.</p>
-      </div>
-      <div class="class-card reveal" style="transition-delay: 0.2s;">
-        <i class="fas fa-chess-knight class-icon"></i>
-        <h3>МЕЧНИК</h3>
-        <span class="class-role">МАСТЕР КЛИНКА</span>
-        <p>Щит, двуруч или два клинка. Идеален для ближнего боя.</p>
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <i class="fas fa-microchip tech-icon"></i>
+          <h3>МЕГА-VBO АРЕНА</h3>
+          <p>Кастомный аллокатор VRAM. Единый буфер на миллионы вершин без перерисовок. Отрисовка происходит моментально.</p>
+        </div>
+        <div class="tech-card reveal" style="transition-delay: 0.1s;">
+          <i class="fas fa-eye tech-icon"></i>
+          <h3>COMPUTE CULLING</h3>
+          <p>Видеокарта за один вызов проверяет видимость всех объектов через атомарные счетчики. Процессор отдыхает.</p>
+        </div>
+        <div class="tech-card reveal" style="transition-delay: 0.2s;">
+          <i class="fas fa-bolt tech-icon"></i>
+          <h3>INDIRECT DRAW</h3>
+          <p>Ни один байт не возвращается в RAM. Прямые инструкции железу через предкомпилированные SPIR-V шейдеры.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- СИСТЕМЫ (РЕДКОСТЬ, ДАНЖИ, КРАФТ) -->
-  <div class="main-content" id="systems-section">
+  <!-- СИСТЕМЫ И ФИЧИ ИГРЫ -->
+  <div class="main-content" id="features-section">
+    <section class="game-features">
+      <h2 class="section-title reveal">БОЛЬШЕ, ЧЕМ ПРОСТО ДВИЖОК</h2>
 
-    <!-- РЕДКОСТИ -->
+      <div class="feature-block reveal">
+        <div class="feature-text">
+          <h3>ДИНАМИЧНЫЕ БОИ (NON-TARGET)</h3>
+          <p>Забудьте про закликивание. Уклонения, тайминги, парирования и контроль дистанции. Уникальный ИИ боссов меняет паттерны атак в зависимости от поведения вашей группы.</p>
+        </div>
+        <div class="feature-image" style="background-image: url('images/2.jpg'); box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);"></div>
+      </div>
+
+      <div class="feature-block reverse reveal">
+        <div class="feature-text">
+          <h3>ХАРДКОРНАЯ ЭКОНОМИКА И КРАФТ</h3>
+          <p>Никакого мусорного лута. Девять тиров редкости от "Обычного" до "Божественного". Лучшую экипировку создают кузнецы из ресурсов, добытых гильдиями в опасных рейдах.</p>
+        </div>
+        <div class="feature-image" style="background-image: url('images/1.jpg');"></div>
+      </div>
+    </section>
+
+    <!-- СИСТЕМЫ (РЕДКОСТЬ, ДАНЖИ, КРАФТ) -->
     <section class="rarity-section reveal">
       <h2 class="section-title">СИСТЕМА РЕДКОСТЕЙ</h2>
       <div class="rarity-list">
-        <div class="rarity-card rarity-poor">
-          <div class="rarity-icon"><i class="fas fa-bug"></i></div>
-          <div><span class="rarity-name">Убогое</span><span class="rarity-range">Уровень 0-3</span></div>
-        </div>
-        <div class="rarity-card rarity-common">
-          <div class="rarity-icon"><i class="fas fa-shield-alt"></i></div>
-          <div><span class="rarity-name">Обычные</span><span class="rarity-range">Уровень 4-10</span></div>
-        </div>
-        <div class="rarity-card rarity-uncommon">
-          <div class="rarity-icon"><i class="fas fa-leaf"></i></div>
-          <div><span class="rarity-name">Необычные</span><span class="rarity-range">Уровень 11-15</span></div>
-        </div>
-        <div class="rarity-card rarity-rare">
-          <div class="rarity-icon"><i class="fas fa-star"></i></div>
-          <div><span class="rarity-name">Редкие</span><span class="rarity-range">Уровень 16-49</span></div>
-        </div>
-        <div class="rarity-card rarity-epic">
-          <div class="rarity-icon"><i class="fas fa-crown"></i></div>
-          <div><span class="rarity-name">Эпические</span><span class="rarity-range">Уровень 61-65</span></div>
-        </div>
-        <div class="rarity-card rarity-legendary">
-          <div class="rarity-icon"><i class="fas fa-skull"></i></div>
-          <div><span class="rarity-name">Легендарные</span><span class="rarity-range">Уровень 66-100</span></div>
-        </div>
-        <div class="rarity-card rarity-mythic">
-          <div class="rarity-icon"><i class="fas fa-dragon"></i></div>
-          <div><span class="rarity-name">Мифические</span><span class="rarity-range">Уровень 101-120</span></div>
-        </div>
-        <div class="rarity-card rarity-ancient">
-          <div class="rarity-icon"><i class="fas fa-hourglass-half"></i></div>
-          <div><span class="rarity-name">Древние</span><span class="rarity-range">Уровень 121-176</span></div>
-        </div>
-        <div class="rarity-card rarity-divine">
-          <div class="rarity-icon"><i class="fas fa-ring"></i></div>
-          <div><span class="rarity-name">Божественные</span><span class="rarity-range">Уровень 300+</span></div>
-        </div>
+        <div class="rarity-card rarity-poor"><div class="rarity-icon"><i class="fas fa-bug"></i></div><div><span class="rarity-name">Убогое</span><span class="rarity-range">Уровень 0-3</span></div></div>
+        <div class="rarity-card rarity-common"><div class="rarity-icon"><i class="fas fa-shield-alt"></i></div><div><span class="rarity-name">Обычные</span><span class="rarity-range">Уровень 4-10</span></div></div>
+        <div class="rarity-card rarity-uncommon"><div class="rarity-icon"><i class="fas fa-leaf"></i></div><div><span class="rarity-name">Необычные</span><span class="rarity-range">Уровень 11-15</span></div></div>
+        <div class="rarity-card rarity-rare"><div class="rarity-icon"><i class="fas fa-star"></i></div><div><span class="rarity-name">Редкие</span><span class="rarity-range">Уровень 16-49</span></div></div>
+        <div class="rarity-card rarity-epic"><div class="rarity-icon"><i class="fas fa-crown"></i></div><div><span class="rarity-name">Эпические</span><span class="rarity-range">Уровень 61-65</span></div></div>
+        <div class="rarity-card rarity-legendary"><div class="rarity-icon"><i class="fas fa-skull"></i></div><div><span class="rarity-name">Легендарные</span><span class="rarity-range">Уровень 66-100</span></div></div>
+        <div class="rarity-card rarity-mythic"><div class="rarity-icon"><i class="fas fa-dragon"></i></div><div><span class="rarity-name">Мифические</span><span class="rarity-range">Уровень 101-120</span></div></div>
+        <div class="rarity-card rarity-ancient"><div class="rarity-icon"><i class="fas fa-hourglass-half"></i></div><div><span class="rarity-name">Древние</span><span class="rarity-range">Уровень 121-176</span></div></div>
+        <div class="rarity-card rarity-divine"><div class="rarity-icon"><i class="fas fa-ring"></i></div><div><span class="rarity-name">Божественные</span><span class="rarity-range">Уровень 300+</span></div></div>
       </div>
     </section>
 
@@ -166,84 +149,104 @@
       <h2 class="section-title">СИСТЕМА ДАНЖЕЙ</h2>
       <div class="dungeon-grid">
         <div class="dungeon-card reveal">
-          <div class="dungeon-header">
-            <span class="dungeon-tier">TIER I</span>
-            <span class="dungeon-level">1-25 УРОВЕНЬ</span>
-          </div>
+          <div class="dungeon-header"><span class="dungeon-tier">TIER I</span><span class="dungeon-level">1-25 УРОВЕНЬ</span></div>
           <p>Простые монстры и базовые механики боссов. Идеально для старта.</p>
         </div>
         <div class="dungeon-card reveal" style="transition-delay: 0.1s;">
-          <div class="dungeon-header">
-            <span class="dungeon-tier">TIER II</span>
-            <span class="dungeon-level">50-75 УРОВЕНЬ</span>
-          </div>
+          <div class="dungeon-header"><span class="dungeon-tier">TIER II</span><span class="dungeon-level">50-75 УРОВЕНЬ</span></div>
           <p>Агрессивные враги, требующие тактики и координации отряда.</p>
         </div>
         <div class="dungeon-card reveal" style="transition-delay: 0.2s;">
-          <div class="dungeon-header">
-            <span class="dungeon-tier">TIER III</span>
-            <span class="dungeon-level">100+ УРОВЕНЬ</span>
-          </div>
+          <div class="dungeon-header"><span class="dungeon-tier">TIER III</span><span class="dungeon-level">100+ УРОВЕНЬ</span></div>
           <p>Безупречная координация, знание механик, максимальная сложность.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- КРАФТ -->
-    <section class="crafting-section reveal">
-      <h2 class="section-title">ИСКУССТВО СОЗИДАНИЯ</h2>
-      <div class="crafting-grid">
-        <div class="craft-card reveal">
-          <i class="fas fa-gavel profession-icon"></i>
-          <h3>КУЗНЕЧНОЕ ДЕЛО</h3>
-          <p>Создавайте непробиваемую броню и смертоносное оружие из редких руд.</p>
-        </div>
-        <div class="craft-card reveal" style="transition-delay: 0.1s;">
-          <i class="fas fa-flask profession-icon"></i>
-          <h3>АЛХИМИЯ</h3>
-          <p>Варите исцеляющие эликсиры, усиливающие зелья и смертельные яды.</p>
-        </div>
-        <div class="craft-card reveal" style="transition-delay: 0.2s;">
-          <i class="fas fa-scroll profession-icon"></i>
-          <h3>НАЛОЖЕНИЕ ЧАР</h3>
-          <p>Зачаровывайте предметы с помощью древних рун и душ поверженных врагов.</p>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- CTA SECTION -->
-  <section id="cta-section" class="cta-section reveal">
-    <div class="cta-background" style="background-image: url('images/3.jpg');"></div>
-
-    <div class="cta-content">
-      <h2>ТВОЕ ПРИКЛЮЧЕНИЕ</h2>
-      <p class="cta-text">Проект находится в стадии закрытой разработки.</p>
-
-      <div class="action-container">
-        <button class="launcher-button action-btn">СКАЧАТЬ ИГРУ</button>
-        <span class="error-span"></span>
-      </div>
-      <div class="action-container" style="margin-top: 15px;">
-        <button class="launcher-button secondary action-btn">ПОДАТЬ ЗАЯВКУ НА ЗБТ</button>
-        <span class="error-span"></span>
+  <!-- КЛАССЫ -->
+  <section class="classes-section" id="classes-section">
+    <div class="classes-container">
+      <h2 class="section-title reveal">ВЫБЕРИ СВОЙ ПУТЬ</h2>
+      <div class="classes-grid">
+        <div class="class-card reveal">
+          <i class="fas fa-shield-alt class-icon"></i>
+          <h3>ПАЛАДИН</h3>
+          <span class="class-role">СТРАЖ СВЕТА</span>
+          <p>Абсолютный танк и саппорт. Способен сдержать натиск босса и спасти группу мощными аурами.</p>
+        </div>
+        <div class="class-card reveal" style="transition-delay: 0.1s;">
+          <i class="fas fa-fire class-icon"></i>
+          <h3>ВОЛШЕБНИК</h3>
+          <span class="class-role">ПОВЕЛИТЕЛЬ СТИХИЙ</span>
+          <p>Хрустальная пушка. Требует микроконтроля маны и позиционирования для каста разрушительных AoE.</p>
+        </div>
+        <div class="class-card reveal" style="transition-delay: 0.2s;">
+          <i class="fas fa-chess-knight class-icon"></i>
+          <h3>МЕЧНИК</h3>
+          <span class="class-role">МАСТЕР КЛИНКА</span>
+          <p>Высочайший урон в ближнем бою. Использует серии комбо-атак и кровотечения.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ФУТЕР -->
-  <footer class="main-footer">
-    <div style="margin-bottom: 20px; font-size: 18px;">
-      <a href="https://discord.gg/3Du7yr2" target="_blank" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;"><i class="fab fa-discord"></i></a>
-      <a href="https://vk.com/wardencraft" target="_blank" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;"><i class="fab fa-vk"></i></a>
-      <a href="https://t.me/WardenCraftOfficial" target="_blank" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;"><i class="fab fa-telegram"></i></a>
+  <!-- ДОРОЖНАЯ КАРТА (ROADMAP) - DATA-DRIVEN -->
+  <section class="roadmap-section" id="roadmap-section">
+    <h2 class="section-title reveal">ДОРОЖНАЯ КАРТА</h2>
+    <p class="roadmap-desc reveal">Проект постоянно масштабируется. Мы только начали.</p>
+    
+    <!-- Сюда JS сам сгенерирует Roadmap -->
+    <div class="timeline" id="roadmap-container"></div>
+  </section>
+
+  <!-- ДНЕВНИКИ РАЗРАБОТКИ (НОВОСТИ) - DATA-DRIVEN -->
+  <section class="news-section" id="news-section">
+    <div class="news-container">
+      <h2 class="section-title reveal">ДНЕВНИКИ РАЗРАБОТКИ</h2>
+      
+      <!-- Сюда JS сам сгенерирует карточки новостей -->
+      <div class="news-grid" id="news-grid-container"></div>
     </div>
+  </section>
+
+  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЧТЕНИЯ СТАТЕЙ -->
+  <div class="article-modal" id="article-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <button class="close-modal"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <h2 id="modal-title">Заголовок</h2>
+        <span class="modal-date" id="modal-tag">ДНЕВНИКИ РАЗРАБОТКИ</span>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Текст вставляется через JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA И ФУТЕР -->
+  <section id="cta-section" class="cta-section reveal">
+    <div class="cta-background" style="background-image: url('images/3.jpg');"></div>
+    <div class="cta-content">
+      <h2 style="font-family: 'Cinzel', serif; font-size: 42px;">СТАНЬ ЧАСТЬЮ ИСТОРИИ</h2>
+      <p class="cta-text">Подпишись на наши соцсети, чтобы не пропустить старт ЗБТ и свежие дневники разработки.</p>
+      <div class="cta-socials">
+        <a href="https://discord.gg/3Du7yr2" target="_blank" class="cta-social-btn discord"><i class="fab fa-discord"></i> Discord</a>
+        <a href="https://vk.com/wardencraft" target="_blank" class="cta-social-btn vk"><i class="fab fa-vk"></i> ВКонтакте</a>
+        <a href="https://t.me/WardenCraftOfficial" target="_blank" class="cta-social-btn tg"><i class="fab fa-telegram"></i> Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
     <div class="footer-copyright">
-      © 2026 WARDENCRAFT. CUSTOM ENGINE. ALL RIGHTS RESERVED.
+      © 2026 WARDENCRAFT. CUSTOM ENGINE. POWERED BY VULKAN. ALL RIGHTS RESERVED.
     </div>
   </footer>
 
-  <!-- Подключение логики -->
+  <!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
+  <script src="js/data.js"></script>
   <script src="js/engine.js"></script>
 </body>
 
