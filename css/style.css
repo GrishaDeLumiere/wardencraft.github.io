@@ -1,0 +1,537 @@
+/* СТРОГИЙ СБРОС И ШРИФТЫ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #050505;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================== НАВБАР ================== */
+.main-nav {
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-link {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-social a {
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 15px;
+    font-size: 18px;
+    transition: 0.2s ease;
+}
+
+.nav-social a:hover {
+    color: white;
+}
+
+/* ================== АНИМАЦИИ (ПЛАВНОЕ ПОЯВЛЕНИЕ) ================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================== HERO SECTION ================== */
+.hero-section {
+    height: 100vh;
+    background: url('../images/0.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+}
+
+/* ================== КНОПКИ (ИЗ ЛАУНЧЕРА) ================== */
+.action-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
+}
+
+.launcher-button {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.launcher-button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.launcher-button.secondary {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.launcher-button.secondary:hover {
+    border-color: white;
+    color: white;
+}
+
+.error-span {
+    font-size: 11px;
+    color: #ff3333;
+    margin-top: 10px;
+    opacity: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.2s ease;
+    position: absolute;
+    bottom: -25px;
+}
+
+/* ================== КОНТЕНТ ================== */
+.main-content,
+.classes-section,
+.cta-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 6px;
+    margin-bottom: 60px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.feature-block {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.feature-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h3 {
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.feature-text p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
+}
+
+.feature-image {
+    flex: 1;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ================== КАРТОЧКИ КЛАССОВ ================== */
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.class-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+.class-card:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.class-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.class-card h3 {
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.class-role {
+    display: block;
+    font-size: 10px;
+    color: #ff3333;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.class-card p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+}
+
+/* ================== СИСТЕМА РЕДКОСТЕЙ ================== */
+.rarity-section {
+    margin-bottom: 80px;
+}
+
+.rarity-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.rarity-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 4px solid;
+    transition: 0.2s ease;
+}
+
+.rarity-card:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rarity-icon {
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.rarity-name {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.rarity-range {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+/* Цвета редкостей */
+.rarity-poor {
+    border-left-color: #9a9a9a;
+    color: #9a9a9a;
+}
+
+.rarity-common {
+    border-left-color: #ffffff;
+    color: #ffffff;
+}
+
+.rarity-uncommon {
+    border-left-color: #1eff00;
+    color: #1eff00;
+}
+
+.rarity-rare {
+    border-left-color: #0070ff;
+    color: #0070ff;
+}
+
+.rarity-epic {
+    border-left-color: #a335ee;
+    color: #a335ee;
+}
+
+.rarity-legendary {
+    border-left-color: #ff8000;
+    color: #ff8000;
+}
+
+.rarity-mythic {
+    border-left-color: #e6cc80;
+    color: #e6cc80;
+}
+
+.rarity-ancient {
+    border-left-color: #00ccff;
+    color: #00ccff;
+}
+
+.rarity-divine {
+    border-left-color: #ff5555;
+    color: #ff5555;
+}
+
+/* ================== СИСТЕМА ДАНЖЕЙ ================== */
+.dungeon-section {
+    margin-bottom: 80px;
+}
+
+.dungeon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.dungeon-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+}
+
+.dungeon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.dungeon-tier {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.dungeon-level {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+.dungeon-card p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+}
+
+/* ================== КРАФТ ================== */
+.crafting-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.craft-card {
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    padding: 40px 20px;
+    text-align: center;
+    transition: 0.2s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.craft-card:hover {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.profession-icon {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.craft-card h3 {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.craft-card p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+}
+
+/* ================== CTA И ФУТЕР ================== */
+.cta-section {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 80px auto;
+    max-width: 1200px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.cta-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    filter: grayscale(30%);
+}
+
+.cta-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    margin-bottom: 10px;
+    letter-spacing: 6px;
+}
+
+.cta-text {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 2px;
+}
+
+/* ТРЯСКА КНОПОК */
+.shake {
+    animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
