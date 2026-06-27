@@ -364,50 +364,6 @@ body {
     color: #ff5555;
 }
 
-/* ================== СИСТЕМА ДАНЖЕЙ ================== */
-.dungeon-section {
-    margin-bottom: 80px;
-}
-
-.dungeon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.dungeon-card {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px;
-}
-
-.dungeon-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
-
-.dungeon-tier {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.dungeon-level {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 1px;
-}
-
-.dungeon-card p {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.6;
-}
-
 /* ================== КРАФТ ================== */
 .crafting-grid {
     display: grid;
@@ -757,6 +713,21 @@ h1 {
 .timeline-item.active .timeline-dot {
     background: #ffffff;
     box-shadow: 0 0 15px #ffffff;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        box-shadow: 0 0 5px #ffffff;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #ffffff, 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ffffff;
+    }
 }
 
 .timeline-content h3 {
@@ -774,6 +745,96 @@ h1 {
     font-size: 14px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 15px;
+}
+
+/* Прогресс-бар */
+.progress-container {
+    margin-top: 10px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.progress-label {
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.progress-percentage {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    transition: none;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 2px;
+    position: relative;
+    transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: width;
+}
+
+.timeline-item.completed .progress-fill {
+    background: linear-gradient(90deg, #ff3333, #ff6666);
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+}
+
+.timeline-item.active .progress-fill {
+    background: linear-gradient(90deg, #ffffff, #cccccc);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.timeline-item.pending .progress-fill {
+    background: linear-gradient(90deg, #444444, #666666);
+}
+
+.timeline-item.active .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+.timeline-item.reveal .progress-fill {
+    opacity: 1;
+}
+
+.timeline-item.reveal:not(.active) .progress-fill {
+    width: 0;
 }
 
 /* ================== КНОПКИ СОЦСЕТЕЙ (CTA) ================== */
@@ -819,6 +880,76 @@ h1 {
     border-color: #229ED9;
 }
 
+/* Кастомный скроллбар для модалки */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 51, 51, 0.5);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #ff3333;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020202;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 51, 51, 0.3);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff3333;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.8);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ff3333 #020202;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.timeline-item.active .timeline-dot {
+    background: #ffffff;
+    border-color: #fff;
+    animation: pulseDot 2s infinite;
+}
+
+.timeline-item.completed .timeline-dot {
+    background: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 0 0 15px #ff3333;
+}
 
 /* ================== СЕКЦИЯ НОВОСТЕЙ ================== */
 .news-section {
@@ -1035,75 +1166,169 @@ h1 {
     color: #ff3333;
 }
 
-/* Кастомный скроллбар для модалки */
-.modal-body::-webkit-scrollbar {
-    width: 6px;
+/* ================== КНОПКИ СОЦСЕТЕЙ В МОДАЛКЕ ================== */
+.modal-social-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.modal-body::-webkit-scrollbar-track {
+.modal-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.modal-social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.modal-social-btn:hover::before {
+    left: 100%;
+}
+
+.modal-social-btn i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.modal-social-btn:hover i {
+    transform: scale(1.2);
+}
+
+/* Кнопка VK */
+.modal-social-btn.vk {
+    background: rgba(255, 51, 51, 0.1);
+    border-color: rgba(255, 51, 51, 0.3);
+    color: #ff4444;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.1);
+}
+
+.modal-social-btn.vk:hover {
+    background: rgba(255, 51, 51, 0.2);
+    border-color: #ff3333;
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.3), 0 0 60px rgba(255, 51, 51, 0.1);
+    transform: translateY(-2px);
+    color: #ff5555;
+}
+
+.modal-social-btn.vk:active {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+}
+
+/* Кнопка Telegram */
+.modal-social-btn.telegram {
+    background: rgba(0, 136, 204, 0.1);
+    border-color: rgba(0, 136, 204, 0.3);
+    color: #0099dd;
+    box-shadow: 0 0 20px rgba(0, 136, 204, 0.1);
+}
+
+.modal-social-btn.telegram:hover {
+    background: rgba(0, 136, 204, 0.2);
+    border-color: #0088cc;
+    box-shadow: 0 0 30px rgba(0, 136, 204, 0.3), 0 0 60px rgba(0, 136, 204, 0.1);
+    transform: translateY(-2px);
+    color: #00aaff;
+}
+
+.modal-social-btn.telegram:active {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(0, 136, 204, 0.2);
+}
+
+/* ==========================================
+   ЭКСТРА-ВИЗУАЛ: CANVAS ФОН
+   ========================================== */
+#bg-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* ==========================================
+   МИНИМАЛИСТИЧНЫЙ ПРЕЛОАДЕР (САЙТ)
+   ========================================== */
+#simpleLoadingContainer {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background: #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s;
 }
 
-.modal-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 51, 51, 0.5);
-    border-radius: 3px;
+.simple-loader {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top: 2px solid #ff4400;
+    border-radius: 50%;
+    animation: simple-spin 0.8s linear infinite;
+    margin-bottom: 25px;
 }
 
-.modal-body::-webkit-scrollbar-thumb:hover {
-    background: #ff3333;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #020202;
-    /* Глубокий черный */
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 51, 51, 0.3);
-    /* Легкий контур Vulkan */
-    border-radius: 2px;
-    transition: 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #ff3333;
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.8);
-}
-
-html {
-    scrollbar-width: thin;
-    scrollbar-color: #ff3333 #020202;
-}
-
-@keyframes pulseDot {
+@keyframes simple-spin {
     0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-
-    70% {
-        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        transform: rotate(0deg);
     }
 
     100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        transform: rotate(360deg);
     }
 }
 
-.timeline-item.active .timeline-dot {
-    background: #ffffff;
-    border-color: #fff;
-    animation: pulseDot 2s infinite;
+@keyframes simple-pulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
-.timeline-item.completed .timeline-dot {
-    background: #ff3333;
-    border-color: #ff3333;
-    box-shadow: 0 0 15px #ff3333;
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #ff4400;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
 }

@@ -9,12 +9,33 @@
   <meta name="author" content="WardenCraft Team">
   <link rel="canonical" href="https://grishadelumiere.github.io/wardencraft.github.io/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://grishadelumiere.github.io/wardencraft.github.io/">
   <meta property="og:title" content="WardenCraft - Хардкорная MMORPG нового поколения">
   <meta property="og:description" content="Полностью самописный движок на Vulkan. Эпические битвы без просадок FPS, сложная экономика и беспощадные данжи.">
-  <meta property="og:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/0.jpg">
+  <meta property="og:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/3.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WardenCraft - Хардкорная MMORPG нового поколения">
+  <meta name="twitter:description" content="Полностью самописный движок на Vulkan. Эпические битвы без просадок FPS.">
+  <meta name="twitter:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/3.jpg">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "WardenCraft",
+      "genre": ["MMORPG", "Action RPG", "Adventure"],
+      "gamePlatform": "PC",
+      "applicationCategory": "Game",
+      "operatingSystem": "Windows",
+      "description": "Хардкорная фэнтезийная MMORPG с самописным GPU-Driven движком на базе Vulkan.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "WardenCraft Team"
+      }
+    }
+  </script>
 
   <title>WardenCraft - Официальный сайт</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +45,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mobile.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="theme-color" content="#050505">
 </head>
 
 <body>
+  <noscript>
+    <div style="position: fixed; top: 0; left: 0; width: 100%; background: #ff3300; color: #fff; text-align: center; padding: 15px; z-index: 100000; font-family: 'Montserrat', sans-serif; font-weight: bold; text-transform: uppercase;">
+      Критическая ошибка: Для доступа к базе данных WardenCraft необходимо включить JavaScript.
+    </div>
+  </noscript>
+  <canvas id="bg-particles"></canvas>
+  <div id="simpleLoadingContainer">
+    <div class="simple-loader"></div>
+  </div>
 
   <!-- НАВБАР -->
   <nav class="main-nav">
+    <div id="scroll-progress"></div>
     <div class="nav-container">
       <div class="nav-logo">
         <a href="#" class="logo-link">WARDENCRAFT</a>
@@ -43,9 +78,9 @@
       </div>
       <div class="nav-right">
         <div class="nav-social">
-          <a href="https://discord.gg/3Du7yr2" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-          <a href="https://vk.com/wardencraft" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
-          <a href="https://t.me/WardenCraftOfficial" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://discord.gg/3Du7yr2" target="_blank" aria-label="Присоединиться к Discord" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://vk.com/wardencraft" target="_blank" aria-label="Группа ВКонтакте" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+          <a href="https://t.me/WardenCraftOfficial" target="_blank" aria-label="Telegram Канал" title="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
     </div>
@@ -172,25 +207,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ДАНЖИ -->
-    <section class="dungeon-section reveal">
-      <h2 class="section-title">СИСТЕМА ДАНЖЕЙ</h2>
-      <div class="dungeon-grid">
-        <div class="dungeon-card reveal">
-          <div class="dungeon-header"><span class="dungeon-tier">TIER I</span><span class="dungeon-level">1-25 УРОВЕНЬ</span></div>
-          <p>Простые монстры и базовые механики боссов. Идеально для старта.</p>
-        </div>
-        <div class="dungeon-card reveal" style="transition-delay: 0.1s;">
-          <div class="dungeon-header"><span class="dungeon-tier">TIER II</span><span class="dungeon-level">50-75 УРОВЕНЬ</span></div>
-          <p>Агрессивные враги, требующие тактики и координации отряда.</p>
-        </div>
-        <div class="dungeon-card reveal" style="transition-delay: 0.2s;">
-          <div class="dungeon-header"><span class="dungeon-tier">TIER III</span><span class="dungeon-level">100+ УРОВЕНЬ</span></div>
-          <p>Безупречная координация, знание механик, максимальная сложность.</p>
-        </div>
-      </div>
-    </section>
   </div>
 
   <!-- КЛАССЫ -->
@@ -233,7 +249,6 @@
   <section class="news-section" id="news-section">
     <div class="news-container">
       <h2 class="section-title reveal">ДНЕВНИКИ РАЗРАБОТКИ</h2>
-
       <!-- Сюда JS сам сгенерирует карточки новостей -->
       <div class="news-grid" id="news-grid-container"></div>
     </div>
@@ -243,7 +258,7 @@
   <div class="article-modal" id="article-modal">
     <div class="modal-backdrop"></div>
     <div class="modal-box">
-      <button class="close-modal"><i class="fas fa-times"></i></button>
+      <button class="close-modal" aria-label="Закрыть окно"><i class="fas fa-times"></i></button>
       <div class="modal-header">
         <h2 id="modal-title">Заголовок</h2>
         <span class="modal-date" id="modal-tag">ДНЕВНИКИ РАЗРАБОТКИ</span>
