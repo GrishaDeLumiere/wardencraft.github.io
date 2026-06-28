@@ -15,24 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.reveal:not(.active)').forEach(el => revealOnScroll.observe(el));
     };
 
-    // --- 2. ЛОГИКА КНОПОК "В РАЗРАБОТКЕ" ---
+    // --- 2. ЛОГИКА КНОПКИ "ПРИСОЕДИНИТЬСЯ К ЗБТ" ---
     document.querySelectorAll('.action-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            const container = button.closest('.action-container');
-            const errorSpan = container.querySelector('.error-span');
-            errorSpan.textContent = 'ОШИБКА: ПРОЕКТ В РАЗРАБОТКЕ!';
-            errorSpan.style.opacity = '1';
-            container.classList.remove('shake');
-            void container.offsetWidth;
-            container.classList.add('shake');
-            button.style.borderColor = '#ff3333';
-            button.style.color = '#ff3333';
-            setTimeout(() => {
-                errorSpan.style.opacity = '0';
-                button.style.borderColor = '';
-                button.style.color = '';
-            }, 2500);
+
+            // Скроллим к CTA-секции с соцсетями
+            const ctaSection = document.getElementById('cta-section');
+            if (ctaSection) {
+                ctaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Подсвечиваем кнопки соцсетей
+                const socialBtns = ctaSection.querySelectorAll('.cta-social-btn');
+                socialBtns.forEach(btn => {
+                    btn.style.transform = 'scale(1.1)';
+                    btn.style.boxShadow = '0 0 30px rgba(255, 51, 51, 0.6)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                        btn.style.boxShadow = '';
+                    }, 1500);
+                });
+            }
         });
     });
 
