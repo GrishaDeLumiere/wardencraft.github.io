@@ -1,218 +1,307 @@
 /* =========================================================
-   MOBILE RESPONSIVE (Экраны меньше 768px)
+   WARDENCRAFT - MOBILE RESPONSIVE STYLES (mobile.css)
    ========================================================= */
 
-@media screen and (max-width: 768px) {
+/* ГЛОБАЛЬНАЯ ЗАЩИТА ОТ ДЫР ПО БОКАМ */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
-    /* --- ГЛОБАЛЬНЫЕ ОТСТУПЫ --- */
-    .main-content, 
-    .classes-section, 
-    .cta-section, 
-    .vulkan-section, 
-    .roadmap-section, 
-    .news-section {
-        padding: 60px 15px;
+/* ================== ПЛАНШЕТЫ (до 1024px) ================== */
+@media screen and (max-width: 1024px) {
+    .hero-content h1, h1 {
+        font-size: 56px;
+        letter-spacing: 10px;
+    }
+
+    .main-nav {
+        padding: 15px 20px;
+    }
+
+    .feature-block, .feature-block.reverse {
+        gap: 30px;
+    }
+
+    .stats-wrapper {
+        gap: 20px;
+    }
+
+    .stat-card {
+        min-width: 200px;
+        padding: 20px;
+    }
+
+    .classes-grid, .tech-grid, .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ================== МОБИЛЬНЫЕ ТЕЛЕФОНЫ (до 768px) ================== */
+@media screen and (max-width: 768px) {
+    .hero-content h1, h1 {
+        font-size: 36px;
+        letter-spacing: 6px;
+        text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
     }
 
     .section-title {
         font-size: 20px;
-        letter-spacing: 3px;
+        letter-spacing: 4px;
         margin-bottom: 40px;
     }
 
-    /* --- НАВБАР (ШАПКА) --- */
+    .main-content, .classes-section, .cta-section, .vulkan-section, .roadmap-section, .news-section {
+        padding: 60px 15px;
+    }
+
+    /* НАВБАР */
     .main-nav {
-        padding: 10px 15px;
+        padding: 15px;
     }
 
     .nav-container {
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .nav-logo {
+        flex: 0 0 auto;
     }
 
     .logo-link {
-        font-size: 20px;
-        letter-spacing: 3px;
-    }
-
-    .nav-links {
-        display: flex;
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    .nav-links::-webkit-scrollbar { display: none; }
-
-    .nav-link {
-        margin: 0 10px;
-        white-space: nowrap; 
+        font-size: 16px;
+        letter-spacing: 2px;
     }
 
     .nav-right {
-        display: none; 
+        flex: 0 0 auto;
     }
 
-    /* --- HERO СЕКЦИЯ --- */
-    .hero-content h1 {
-        font-size: 36px;
-        letter-spacing: 6px;
+    .nav-social a {
+        margin-left: 15px;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    .nav-links {
+        flex: 0 0 100%;
+        order: 3;
+        display: flex;
+        overflow-x: auto;
+        padding: 15px 0 5px 0;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        scrollbar-width: none; 
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        margin: 0 15px 0 0;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    /* HERO СЕКЦИЯ */
+    .hero-content {
+        padding: 0 15px;
+        margin-top: 60px;
     }
 
     .hero-subtitle {
-        font-size: 11px;
+        font-size: 12px;
         letter-spacing: 2px;
-        padding: 0 10px;
         line-height: 1.6;
-        margin-bottom: 30px;
+    }
+
+    .hero-subtitle br {
+        display: none; 
     }
 
     .action-container {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
         margin: 0 auto;
     }
 
-    /* --- СЕКЦИЯ VULKAN --- */
-    .vulkan-logo {
-        height: 60px;
-    }
-
-    .vulkan-desc {
-        font-size: 12px;
-        margin-bottom: 40px;
-    }
-
+    /* VULKAN СЕКЦИЯ */
     .stats-wrapper {
         flex-direction: column;
+        align-items: center;
         gap: 15px;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
 
     .stat-card {
-        padding: 20px;
-        min-width: 100%;
+        width: 100%;
+        max-width: 320px;
+        min-width: 0;
     }
 
     .stat-number {
-        font-size: 36px;
+        font-size: 38px;
     }
 
-    /* --- ФИЧИ (ОБ ИГРЕ) --- */
-    .feature-block, 
-    .feature-block.reverse {
-        flex-direction: column; 
+    /* КАРТИНКИ (Динамические бои) */
+    .feature-block, .feature-block.reverse {
+        flex-direction: column;
         text-align: center;
         gap: 20px;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
 
     .feature-image {
+        flex: none;
         width: 100%;
-        height: 200px;
-        border-radius: 4px;
+        height: 250px;
+        min-height: 250px;
+        order: -1;
     }
 
-    /* --- СЕТКИ (КЛАССЫ, КРАФТ, ДАНЖИ, НОВОСТИ) --- */
-    .classes-grid, 
-    .crafting-grid, 
-    .dungeon-grid, 
-    .rarity-list, 
-    .news-grid, 
-    .tech-grid {
+    /* СЕТКИ КОНТЕНТА (1 колонка) */
+    .classes-grid, .tech-grid, .news-grid, .rarity-list {
         grid-template-columns: 1fr;
-        gap: 15px;
     }
 
-    .class-card, .craft-card, .dungeon-card, .tech-card {
-        padding: 25px 15px;
-    }
-
-    /* --- ROADMAP (ДОРОЖНАЯ КАРТА) --- */
+    /* ДОРОЖНАЯ КАРТА */
     .timeline {
-        padding-left: 25px;
+        padding-left: 35px;
     }
 
     .timeline::before {
-        left: 5px;
+        left: 10px;
     }
 
     .timeline-dot {
-        left: -26px; 
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
+        left: -30px;
+        top: 3px; 
     }
 
     .timeline-content h3 {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .timeline-content p {
-        font-size: 12px;
+        font-size: 13px;
     }
 
-    /* --- МОДАЛЬНОЕ ОКНО (НОВОСТИ) --- */
+    /* НОВОСТИ И МОДАЛКА */
+    .news-img {
+        height: 200px;
+    }
+
     .modal-box {
         width: 95%;
         max-height: 90vh;
-        margin-top: 10px;
+        margin: 0 auto;
     }
 
     .modal-header {
-        padding: 20px 20px 15px 20px;
+        padding: 25px 20px 15px 20px;
     }
 
     .modal-header h2 {
         font-size: 18px;
+        padding-right: 30px; 
     }
 
     .modal-body {
         padding: 20px;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .close-modal {
-        top: 10px;
-        right: 10px;
+        top: 15px;
+        right: 15px;
         font-size: 20px;
         background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
         width: 35px;
         height: 35px;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* --- CTA И ФУТЕР --- */
-    .cta-content h2 {
-        font-size: 28px !important;
-        letter-spacing: 4px;
+    .news-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .cta-text {
-        font-size: 11px;
+    /* CTA И ФУТЕР */
+    .cta-content h2 {
+        font-size: 26px !important;
+        letter-spacing: 3px !important;
     }
 
     .cta-socials {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
-        width: 100%;
-        padding: 0 20px;
+        gap: 15px;
     }
 
     .cta-social-btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
         justify-content: center;
     }
+}
 
-    .main-footer {
-        padding: 20px 10px;
-        font-size: 9px;
-        line-height: 1.5;
+/* ================== МАЛЕНЬКИЕ ЭКРАНЫ (до 480px) ================== */
+@media screen and (max-width: 480px) {
+    .hero-content h1, h1 {
+        font-size: 26px;
+        letter-spacing: 4px;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .class-card, .tech-card {
+        padding: 30px 15px;
+    }
+
+    .news-content {
+        padding: 20px;
+    }
+
+    .modal-social-links {
+        flex-direction: column;
+    }
+
+    .modal-social-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ================== ОТКЛЮЧЕНИЕ HOVER-ЭФФЕКТОВ НА ТАЧ-УСТРОЙСТВАХ ================== */
+@media (hover: none) {
+    .class-card:hover, .tech-card:hover, .news-card:hover, .rarity-card:hover {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.4); 
+    }
+    
+    .tech-card:hover { border-color: rgba(255, 255, 255, 0.05); background: rgba(0, 0, 0, 0.6); }
+    .news-card:hover { box-shadow: none; border-color: rgba(255, 255, 255, 0.05); }
+    
+    .news-card:hover .news-img {
+        transform: none;
     }
 }
