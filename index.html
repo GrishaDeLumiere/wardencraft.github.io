@@ -19,21 +19,41 @@
   <meta name="twitter:title" content="WardenCraft - Хардкорная MMORPG нового поколения">
   <meta name="twitter:description" content="Полностью самописный движок на Vulkan. Эпические битвы без просадок FPS.">
   <meta name="twitter:image" content="https://grishadelumiere.github.io/wardencraft.github.io/images/3.jpg">
-
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "WardenCraft",
-      "genre": ["MMORPG", "Action RPG", "Adventure"],
-      "gamePlatform": "PC",
-      "applicationCategory": "Game",
-      "operatingSystem": "Windows",
-      "description": "Хардкорная фэнтезийная MMORPG с самописным GPU-Driven движком на базе Vulkan.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "WardenCraft Team"
-      }
+      "@graph": [{
+          "@type": "VideoGame",
+          "name": "WardenCraft",
+          "genre": ["MMORPG", "Action RPG", "Adventure"],
+          "gamePlatform": "PC",
+          "applicationCategory": "Game",
+          "operatingSystem": "Windows",
+          "description": "Хардкорная фэнтезийная MMORPG с самописным GPU-Driven движком на базе Vulkan 1.3.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "WardenCraft Team"
+          }
+        },
+        {
+          "@type": "NewsArticle",
+          "headline": "МЕГА Dev Update: Переход на Vulkan и смерть OpenGL",
+          "datePublished": "2026-06-27",
+          "description": "Мы стёрли OpenGL с лица нашего движка. Встречайте чистый, раскалённый Vulkan, предкомпилированные SPIR-V шейдеры и 3000 FPS..."
+        },
+        {
+          "@type": "NewsArticle",
+          "headline": "Dev Update: Переход на LWJGL 3, STB-шрифты и Линковка предметов",
+          "datePublished": "2026-06-18",
+          "description": "Новый рендер, векторные шрифты STB, интерактивный чат и линковка предметов..."
+        },
+        {
+          "@type": "NewsArticle",
+          "headline": "Большое возвращение: Обновление ядра, матричный инвентарь и некстген-графика",
+          "datePublished": "2026-06-11",
+          "description": "Полгода тишины — и мы возвращаемся с полностью переписанным ядром. Netty, матричный инвентарь, волюметрическое небо и свой веб-портал..."
+        }
+      ]
     }
   </script>
 
@@ -41,22 +61,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <meta name="google-site-verification" content="HVl4yK5DAQGuuv8Re8E69ylQ9yif8sAX9zXIFJusT9M" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mobile.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="theme-color" content="#050505">
 </head>
 
 <body>
+  <!-- СКРЫТЫЙ SEO БЛОК ДЛЯ РОБОТОВ ГУГЛА -->
   <noscript>
     <div style="position: fixed; top: 0; left: 0; width: 100%; background: #ff3300; color: #fff; text-align: center; padding: 15px; z-index: 100000; font-family: 'Montserrat', sans-serif; font-weight: bold; text-transform: uppercase;">
       Критическая ошибка: Для доступа к базе данных WardenCraft необходимо включить JavaScript.
     </div>
+    <article style="display: none;">
+      <h1>WardenCraft - MMORPG на Vulkan</h1>
+      <h2>ДОРОЖНАЯ КАРТА (ROADMAP)</h2>
+      <p>ФАЗА 1: ФУНДАМЕНТ. Полный отказ от ванильного кода и Forge. Переход с LWJGL 2 на LWJGL 3.4.1 Core Profile, затем на Vulkan 1.3. Создание GPU-Driven пайплайна, написание своего сетевого стека на Netty (Zero-Overhead), матричный инвентарь, STB-шрифты.</p>
+      <p>ФАЗА 2: ГРАФОНИЙ И ПОЛИРОВКА ДВИЖКА. Каскадные тени (3 каскада, 500 FPS) — готово. Волюметрическое небо на Vulkan — готово. Java 25 + FFM API — внедрено. В работе: Hi-Z Occlusion Culling, шейдеры для предметов и сущностей, финальная оптимизация Vulkan-рендера.</p>
+      <p>ФАЗА 3: БОЕВАЯ СИСТЕМА. Создание Non-Target боевой системы с серверной валидацией ударов, кастомными хитбоксами и системой скиллов.</p>
+      <p>ФАЗА 4: NPC, КВЕСТЫ И ОТКРЫТЫЙ МИР. Заселение мира NPC с собственным Data-Driven движком. Диалоги, моральные выборы, система репутации.</p>
+
+      <h2>ПОСЛЕДНИЕ НОВОСТИ И ОБНОВЛЕНИЯ</h2>
+      <h3>МЕГА Dev Update: Переход на Vulkan и смерть OpenGL (2026-06-27)</h3>
+      <p>Мы стёрли OpenGL с лица нашего движка. Встречайте чистый, раскалённый Vulkan 1.3, предкомпилированные SPIR-V шейдеры и 3000 FPS. Тотальная многопоточность процессора, GPU-Driven Rendering, Мега-VBO Арена, Прямой доступ в память GPU, Compute Culling, Indirect Draw.</p>
+      <h3>Dev Update: Переход на LWJGL 3, STB-шрифты и Линковка предметов (2026-06-18)</h3>
+      <p>Мы вырезали древний LWJGL 2.9.4 и java.awt. Новый рендер, векторные шрифты STB, интерактивный чат и линковка предметов. Zero-Allocation математика, новый GUI.</p>
+      <h3>Большое возвращение: Обновление ядра, матричный инвентарь и некстген-графика (2026-06-11)</h3>
+      <p>Полгода тишины — и мы возвращаемся с полностью переписанным ядром. Сетевой движок WardenCraft был написан с нуля на базе Netty (Zero-Overhead). Асинхронный многопоточный режим. Матричный инвентарь как в классических RPG. Некстген-рендер, тени и волюметрическое небо. Собственный веб-портал.</p>
+    </article>
   </noscript>
+
   <canvas id="bg-particles"></canvas>
   <div id="simpleLoadingContainer">
     <div class="simple-loader"></div>
@@ -240,7 +275,6 @@
   <section class="roadmap-section" id="roadmap-section">
     <h2 class="section-title reveal">ДОРОЖНАЯ КАРТА</h2>
     <p class="roadmap-desc reveal">Проект постоянно масштабируется. Мы только начали.</p>
-
     <!-- Сюда JS сам сгенерирует Roadmap -->
     <div class="timeline" id="roadmap-container"></div>
   </section>
