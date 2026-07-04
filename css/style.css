@@ -1356,14 +1356,42 @@ html {
     box-shadow: 0 0 30px rgba(255, 51, 51, 0.15);
 }
 
+/* ================== ПОДПИСИ ПОД ИЗОБРАЖЕНИЯМИ В НОВОСТЯХ ================== */
 .modal-body .news-image-caption {
+    display: block;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-top: -20px;
-    margin-bottom: 25px;
+    margin-top: 8px;
+    margin-bottom: 35px;
+    padding: 8px 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.modal-body .news-image-caption::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 51, 51, 0.3);
+    margin: 0 auto 10px auto;
+    transition: width 0.3s ease;
+}
+
+.modal-body .news-image:hover+.news-image-caption,
+.modal-body .news-image-caption:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-body .news-image:hover+.news-image-caption::before,
+.modal-body .news-image-caption:hover::before {
+    width: 60px;
+    background: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
 }
 
 /* ================== ПАГИНАЦИЯ НОВОСТЕЙ ================== */
@@ -1481,16 +1509,259 @@ html {
 
 /* Анимации для кнопки */
 @keyframes bounceDown {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(4px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(4px);
+    }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes pulseText {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ================== ТИПОГРАФИКА ВНУТРИ МОДАЛКИ ================== */
+
+/* Заголовки H3 внутри новостей */
+.modal-body h3 {
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 35px 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 51, 51, 0.15);
+    position: relative;
+}
+
+.modal-body h3::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #ff3333;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+/* Подзаголовки H4 (если будут) */
+.modal-body h4 {
+    color: #cccccc;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    margin: 25px 0 10px 0;
+    font-weight: 600;
+}
+
+/* Списки внутри новостей */
+.modal-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+.modal-body ul li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    line-height: 1.7;
+    transition: all 0.2s ease;
+}
+
+.modal-body ul li::before {
+    content: '›';
+    position: absolute;
+    left: 5px;
+    top: -1px;
+    color: #ff3333;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.modal-body ul li:hover {
+    color: #ffffff;
+}
+
+.modal-body ul li:hover::before {
+    transform: translateX(3px);
+    text-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+}
+
+/* Выделение важного текста */
+.modal-body strong {
+    color: #ff3333;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Параграфы в теле новости (уточнение) */
+.modal-body p {
+    margin-bottom: 18px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* ================== СТИЛИ ДЛЯ <CODE> ================== */
+code {
+    background: rgba(255, 51, 51, 0.08);
+    color: #ff6b6b;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.05);
+}
+
+code:hover {
+    background: rgba(255, 51, 51, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 51, 51, 0.5);
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.15);
+}
+
+/* Code внутри модалки (чуть темнее фон) */
+.modal-body code {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 51, 51, 0.25);
+    color: #ff8c8c;
+}
+
+.modal-body code:hover {
+    background: rgba(255, 51, 51, 0.2);
+    color: #ffffff;
+    border-color: #ff3333;
+}
+
+/* ================== ИЗОБРАЖЕНИЯ В НОВОСТЯХ (дополнение) ================== */
+.modal-body .news-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 30px 0 5px 0;
+    border: 1px solid rgba(255, 51, 51, 0.15);
+    border-radius: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.modal-body .news-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);
+    border-color: rgba(255, 51, 51, 0.4);
+}
+
+.modal-body .news-image-caption {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* ================== ZOOM ОВЕРЛЕЙ ДЛЯ ИЗОБРАЖЕНИЙ ================== */
+.image-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(20px);
+}
+
+.image-zoom-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.zoom-close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 51, 51, 0.1);
+    border: 1px solid rgba(255, 51, 51, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff3333;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.zoom-close-btn:hover {
+    background: rgba(255, 51, 51, 0.3);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.4);
+}
+
+.zoomed-image {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 1px solid rgba(255, 51, 51, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: zoom-in;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.zoom-counter {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 20px;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    letter-spacing: 2px;
+    pointer-events: none;
 }

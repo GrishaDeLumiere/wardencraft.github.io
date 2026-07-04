@@ -305,3 +305,21 @@ html, body {
         transform: none;
     }
 }
+
+@media (max-width: 768px) {
+    .zoom-close-btn {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .zoomed-image {
+        max-width: 95%;
+    }
+    
+    .zoom-counter {
+        bottom: 20px;
+    }
+}

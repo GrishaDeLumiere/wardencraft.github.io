@@ -444,6 +444,172 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.boxShadow = '';
     }, { passive: true });
 
+
+    // --- 11. ZOOM ФОТОГРАФИЙ В МОДАЛКЕ ---
+    const initImageZoom = () => {
+        const modalBody = document.getElementById('modal-body');
+        if (!modalBody) return;
+
+        const zoomOverlay = document.createElement('div');
+        zoomOverlay.className = 'image-zoom-overlay';
+        zoomOverlay.innerHTML = `
+        <div class="zoom-close-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <img src="" alt="Zoomed Image" class="zoomed-image">
+        <div class="zoom-counter">1/1</div>
+    `;
+        document.body.appendChild(zoomOverlay);
+
+        const zoomedImg = zoomOverlay.querySelector('.zoomed-image');
+        const zoomCloseBtn = zoomOverlay.querySelector('.zoom-close-btn');
+        const zoomCounter = zoomOverlay.querySelector('.zoom-counter');
+
+        let currentImageIndex = 0;
+        let allImages = [];
+        let isZoomed = false;
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+
+        const closeZoom = () => {
+            zoomOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            isZoomed = false;
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            zoomedImg.style.transform = `scale(1) translate(0px, 0px)`;
+            zoomedImg.style.cursor = 'zoom-in';
+        };
+
+        zoomCloseBtn.addEventListener('click', closeZoom);
+        zoomOverlay.addEventListener('click', (e) => {
+            if (e.target === zoomOverlay) closeZoom();
+        });
+
+        modalBody.addEventListener('click', (e) => {
+            const img = e.target.closest('.news-image');
+            if (!img) return;
+
+            allImages = Array.from(modalBody.querySelectorAll('.news-image'));
+            currentImageIndex = allImages.indexOf(img);
+
+            zoomedImg.src = img.src;
+            zoomedImg.alt = img.alt || '';
+            zoomCounter.textContent = `${currentImageIndex + 1}/${allImages.length}`;
+
+            zoomOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            isZoomed = true;
+        });
+
+        const navigateImage = (direction) => {
+            if (allImages.length <= 1) return;
+
+            currentImageIndex = (currentImageIndex + direction + allImages.length) % allImages.length;
+            zoomedImg.src = allImages[currentImageIndex].src;
+            zoomedImg.alt = allImages[currentImageIndex].alt || '';
+            zoomCounter.textContent = `${currentImageIndex + 1}/${allImages.length}`;
+
+            // Сброс зума при переключении
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            zoomedImg.style.transform = `scale(1) translate(0px, 0px)`;
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (!isZoomed) return;
+
+            if (e.key === 'ArrowLeft') navigateImage(-1);
+            if (e.key === 'ArrowRight') navigateImage(1);
+            if (e.key === 'Escape') closeZoom();
+        });
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        zoomedImg.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1 && scale === 1) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }
+        });
+
+        zoomedImg.addEventListener('touchend', (e) => {
+            if (scale > 1) return;
+
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                navigateImage(diffX > 0 ? 1 : -1);
+            }
+        });
+
+        zoomedImg.addEventListener('wheel', (e) => {
+            if (!isZoomed) return;
+            e.preventDefault();
+
+            const delta = e.deltaY > 0 ? -0.2 : 0.2;
+            scale = Math.min(Math.max(1, scale + delta), 5);
+
+            zoomedImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+            zoomedImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        });
+
+        zoomedImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            if (scale > 1) {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                zoomedImg.style.transform = `scale(1) translate(0px, 0px)`;
+                zoomedImg.style.cursor = 'zoom-in';
+            } else {
+                scale = 2;
+                zoomedImg.style.transform = `scale(2)`;
+                zoomedImg.style.cursor = 'grab';
+            }
+        });
+
+        zoomedImg.addEventListener('mousedown', (e) => {
+            if (scale <= 1) return;
+            e.preventDefault();
+
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            zoomedImg.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            zoomedImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            if (zoomOverlay.classList.contains('active')) {
+                zoomedImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+            }
+        });
+    };
+
+    // Инициализация после загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initImageZoom);
+    } else {
+        initImageZoom();
+    }
+
 });
 
 window.addEventListener('scroll', () => {
