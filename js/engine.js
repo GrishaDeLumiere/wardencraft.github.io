@@ -52,9 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 counters.forEach(counter => {
                     const targetStr = counter.getAttribute('data-target');
                     const target = parseFloat(targetStr);
-                    // Детектим, нужно ли нам десятичное чило (например 2.9)
                     const isFloat = targetStr.includes('.') || target % 1 !== 0;
-                    const duration = 2000; // 2 секунды
+                    const duration = 2000;
                     let startTime = null;
 
                     const updateCounter = (currentTime) => {
@@ -62,14 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         const elapsed = currentTime - startTime;
                         let progress = Math.min(elapsed / duration, 1);
 
-                        // Easing функция (easeOutExpo) для AAA-плавности (тормозит под конец)
                         const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
                         const current = easeProgress * target;
 
                         if (isFloat) {
-                            counter.innerText = current.toFixed(1); // Рендерит 0.5, 1.2, 2.9
+                            counter.innerText = current.toFixed(1);
                         } else {
-                            counter.innerText = Math.floor(current); // Рендерит 1500, 3000
+                            counter.innerText = Math.floor(current);
                         }
 
                         if (progress < 1) {
@@ -628,9 +626,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// ==========================================
+// СКРЫТИЕ НАВБАРА И ПРОГРЕСС СКРОЛЛА
+// ==========================================
+let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
+const navbar = document.querySelector('.main-nav');
+const progressBar = document.getElementById('scroll-progress');
+const scrollThreshold = 15;
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById('scroll-progress').style.width = scrolled + "%";
-});
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+            // 1. Апдейтим независимую полоску прогресса (не улетит)
+            if (progressBar) {
+                const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (currentScroll / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            }
+
+            // 2. Логика скрытия панели
+            if (navbar) {
+                const scrollDelta = Math.abs(currentScroll - lastScrollTop);
+
+                if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                    navbar.classList.add('nav-hidden');
+                }
+                else if (currentScroll < lastScrollTop && scrollDelta > 5) {
+                    navbar.classList.remove('nav-hidden');
+                }
+
+                if (currentScroll <= 0) {
+                    navbar.classList.remove('nav-hidden');
+                }
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
+        });
+        ticking = true;
+    }
+}, { passive: true });

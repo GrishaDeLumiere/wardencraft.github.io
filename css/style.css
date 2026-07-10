@@ -25,6 +25,21 @@ body {
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-out;
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff3333, #ff6666);
+    z-index: 1001;
+    transition: width 0.1s linear;
 }
 
 .nav-container {
@@ -403,18 +418,20 @@ body {
     line-height: 1.6;
 }
 
-/* ================== CTA И ФУТЕР ================== */
+/* ================== CTA И ФУТЕР: АБСОЛЮТНЫЙ ХАРДКОР ================== */
 .cta-section {
     position: relative;
     text-align: center;
-    padding: 100px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 80px auto;
-    max-width: 1200px;
+    padding: 150px 20px;
+    margin: 80px auto 0;
+    max-width: 100%;
     overflow: hidden;
-    background-color: #000;
+    background: transparent;
+    border-top: 1px solid rgba(255, 51, 51, 0.2);
+    border-bottom: 1px solid rgba(255, 51, 51, 0.2);
 }
 
+/* 1. ФОН */
 .cta-background {
     position: absolute;
     top: 0;
@@ -424,72 +441,154 @@ body {
     background-size: cover;
     background-position: center;
     z-index: 0;
-    filter: grayscale(30%);
+    filter: grayscale(70%) contrast(1.2) brightness(0.6);
 }
 
-.cta-background::after {
+/* 2. ЗАТЕНЕНИЕ И МРАК ПО КРАЯМ  */
+.cta-section::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.4) 30%, rgba(5, 5, 5, 0.4) 70%, #050505 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .cta-content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .cta-content h2 {
-    margin-bottom: 10px;
-    letter-spacing: 6px;
+    margin-bottom: 15px;
+    letter-spacing: 8px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255, 51, 51, 0.4);
 }
 
 .cta-text {
     color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 40px;
-    font-size: 12px;
-    letter-spacing: 2px;
+    margin-bottom: 50px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
+/* ================== КНОПКИ-СКОСЫ СО СВОИМИ ЦВЕТАМИ ================== */
+.cta-socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.cta-social-btn {
+    position: relative;
+    padding: 16px 40px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+}
+
+.cta-social-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.cta-social-btn:hover {
+    color: #fff;
+    transform: translateY(-5px);
+    background: transparent;
+}
+
+.cta-social-btn:hover::before {
+    height: 100%;
+}
+
+.cta-social-btn i {
+    font-size: 18px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.cta-social-btn:hover i {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+/* DISCORD ЦВЕТА */
+.cta-social-btn.discord::before {
+    background: linear-gradient(0deg, rgba(88, 101, 242, 0.9), rgba(88, 101, 242, 0.3) 100%);
+}
+
+.cta-social-btn.discord:hover {
+    border-color: #5865F2;
+    text-shadow: 0 0 10px rgba(88, 101, 242, 0.8);
+}
+
+/* VK ЦВЕТА */
+.cta-social-btn.vk::before {
+    background: linear-gradient(0deg, rgba(0, 119, 255, 0.9), rgba(0, 119, 255, 0.3) 100%);
+}
+
+.cta-social-btn.vk:hover {
+    border-color: #0077FF;
+    text-shadow: 0 0 10px rgba(0, 119, 255, 0.8);
+}
+
+/* TELEGRAM ЦВЕТА */
+.cta-social-btn.tg::before {
+    background: linear-gradient(0deg, rgba(34, 158, 217, 0.9), rgba(34, 158, 217, 0.3) 100%);
+}
+
+.cta-social-btn.tg:hover {
+    border-color: #229ED9;
+    text-shadow: 0 0 10px rgba(34, 158, 217, 0.8);
+}
+
+/* ================== ФУТЕР - Минимализм ================== */
 .main-footer {
     text-align: center;
-    padding: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 20px;
     font-size: 10px;
     color: rgba(255, 255, 255, 0.2);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    background: #050505;
+    position: relative;
+    z-index: 2;
 }
 
-/* ТРЯСКА КНОПОК */
-.shake {
-    animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
-}
-
-@keyframes shake {
-
-    10%,
-    90% {
-        transform: translate3d(-1px, 0, 0);
-    }
-
-    20%,
-    80% {
-        transform: translate3d(2px, 0, 0);
-    }
-
-    30%,
-    50%,
-    70% {
-        transform: translate3d(-4px, 0, 0);
-    }
-
-    40%,
-    60% {
-        transform: translate3d(4px, 0, 0);
-    }
+/* Разделительная линия между миром и футером */
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
 }
 
 /* ================== VULKAN ENGINE СЕКЦИЯ ================== */
@@ -653,10 +752,10 @@ h1 {
     }
 }
 
-/* ================== ДОРОЖНАЯ КАРТА (ROADMAP) ================== */
+/* ================== ДОРОЖНАЯ КАРТА ================== */
 .roadmap-section {
     padding: 100px 20px;
-    background: #020202;
+    background: transparent;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -677,58 +776,87 @@ h1 {
 .timeline::before {
     content: '';
     position: absolute;
-    left: 15px;
-    top: 0;
+    left: 17px;
+    top: 5px;
     bottom: 0;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 51, 51, 0.8) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 100%);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 50px;
-}
-
-.timeline-item:last-child {
-    margin-bottom: 0;
+    margin-bottom: 60px;
 }
 
 .timeline-dot {
     position: absolute;
     left: -40px;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #333;
-    border: 2px solid #000;
+    top: 25px;
+    width: 14px;
+    height: 14px;
+    border-radius: 0;
+    transform: rotate(45deg);
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 2;
     transition: 0.3s ease;
 }
 
-.timeline-item.completed .timeline-dot {
-    background: #ff3333;
-    box-shadow: 0 0 15px #ff3333;
-}
-
-.timeline-item.active .timeline-dot {
-    background: #ffffff;
-    box-shadow: 0 0 15px #ffffff;
-    animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
+@keyframes pulse-diamond {
     0% {
-        box-shadow: 0 0 5px #ffffff;
+        box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.4);
+        transform: rotate(45deg) scale(1);
     }
 
-    50% {
-        box-shadow: 0 0 20px #ffffff, 0 0 30px rgba(255, 255, 255, 0.5);
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 51, 51, 0);
+        transform: rotate(45deg) scale(1.1);
+        border-color: rgba(255, 51, 51, 0.8);
     }
 
     100% {
-        box-shadow: 0 0 5px #ffffff;
+        box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+        transform: rotate(45deg) scale(1);
     }
+}
+
+.timeline-item.active .timeline-dot {
+    background: #080808;
+    border-color: #ff3333;
+    animation: pulse-diamond 2s infinite;
+}
+
+.timeline-item.completed .timeline-dot {
+    background: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+}
+
+.timeline-item.pending .timeline-dot {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.timeline-content {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 30px;
+    position: relative;
+    top: 0;
+    backdrop-filter: blur(2px);
+    transition: all 0.3s ease;
+}
+
+.timeline-item.completed .timeline-content {
+    border-left-color: rgba(255, 51, 51, 0.4);
+}
+
+.timeline-item.active .timeline-content {
+    border-left-color: #ff3333;
+    background: linear-gradient(90deg, rgba(255, 51, 51, 0.05) 0%, transparent 100%);
+}
+
+.timeline-item.pending .timeline-content {
+    opacity: 0.3;
 }
 
 .timeline-content h3 {
@@ -736,6 +864,7 @@ h1 {
     letter-spacing: 3px;
     margin-bottom: 10px;
     color: #fff;
+    text-transform: uppercase;
 }
 
 .timeline-item.completed .timeline-content h3 {
@@ -746,10 +875,9 @@ h1 {
     font-size: 14px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-/* Прогресс-бар */
 .progress-container {
     margin-top: 10px;
     opacity: 1;
@@ -760,7 +888,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -774,14 +902,13 @@ h1 {
 .progress-percentage {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.8);
-    transition: none;
 }
 
 .progress-bar {
     width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0;
     overflow: hidden;
     position: relative;
 }
@@ -789,7 +916,7 @@ h1 {
 .progress-fill {
     height: 100%;
     width: 0;
-    border-radius: 2px;
+    border-radius: 0;
     position: relative;
     transition: width 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: width;
@@ -954,10 +1081,39 @@ html {
 
 /* ================== СЕКЦИЯ НОВОСТЕЙ ================== */
 .news-section {
+    position: relative;
     padding: 100px 20px;
-    background: #050505;
+    z-index: 10;
+    background: transparent;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.news-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 800px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.4), #ff3333, rgba(255, 51, 51, 0.4), transparent);
+    pointer-events: none;
+}
+
+.news-section::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: #080808;
+    border: 1px solid #ff3333;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.8), inset 0 0 3px rgba(255, 51, 51, 0.5);
+    pointer-events: none;
 }
 
 .news-grid {
