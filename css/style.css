@@ -87,7 +87,6 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-section::before {
@@ -222,7 +221,8 @@ body {
     height: 300px;
     background-size: cover;
     background-position: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 51, 51, 0.25);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ================== КАРТОЧКИ КЛАССОВ ================== */
@@ -628,7 +628,6 @@ h1 {
 
 .hero-section {
     background-attachment: fixed;
-    /* Эффект параллакса */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
