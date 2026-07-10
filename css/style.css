@@ -560,8 +560,10 @@ body {
 /* Технологии (Карточки) */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .tech-card {
@@ -1764,4 +1766,81 @@ code:hover {
     font-size: 12px;
     letter-spacing: 2px;
     pointer-events: none;
+}
+
+/* ================== ССЫЛКИ В ТЕЛЕ НОВОСТИ ================== */
+.modal-body a {
+    color: #cc3333;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 1px dashed rgba(204, 51, 51, 0.4);
+    transition: all 0.25s ease;
+    padding-bottom: 1px;
+}
+
+.modal-body a:hover {
+    color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-color: #ff3333;
+    background: rgba(255, 51, 51, 0.06);
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 2px;
+}
+
+.modal-body p a {
+    border-bottom-width: 1px;
+}
+
+.modal-body strong a {
+    color: #ff4444;
+    border-bottom: 1px solid rgba(255, 68, 68, 0.6);
+    letter-spacing: 1px;
+}
+
+.modal-body strong a:hover {
+    color: #ffffff;
+    background: rgba(255, 51, 51, 0.1);
+    border-bottom-color: #ff3333;
+    box-shadow: 0 1px 0 rgba(255, 51, 51, 0.2);
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/* ================== БЛОК ЗАДАЧ В ДЕВБЛОГЕ (СТАТИКА) ================== */
+.dev-tasks {
+    margin: 25px 0;
+    border-left: 2px solid rgba(255, 51, 51, 0.2);
+    padding-left: 20px;
+}
+
+.dev-task {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dev-task:last-child {
+    border-bottom: none;
+}
+
+.task-marker {
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.task-text {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.task-text strong {
+    color: #ff3333;
+    font-weight: 700;
 }

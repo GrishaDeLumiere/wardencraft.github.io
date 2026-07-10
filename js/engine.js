@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. СЧЕТЧИКИ FPS (VULKAN) ---
+    // --- 3. СЧЕТЧИКИ FPS (VULKAN) С ПОДДЕРЖКОЙ ФЛОАТОВ ---
     const counters = document.querySelectorAll('.counter');
     let hasAnimated = false;
     const statsObserver = new IntersectionObserver((entries) => {
@@ -50,24 +50,41 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting && !hasAnimated) {
                 hasAnimated = true;
                 counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
-                    const updateCounter = () => {
-                        current += step;
-                        if (current < target) {
-                            counter.innerText = Math.ceil(current);
+                    const targetStr = counter.getAttribute('data-target');
+                    const target = parseFloat(targetStr);
+                    // Детектим, нужно ли нам десятичное чило (например 2.9)
+                    const isFloat = targetStr.includes('.') || target % 1 !== 0;
+                    const duration = 2000; // 2 секунды
+                    let startTime = null;
+
+                    const updateCounter = (currentTime) => {
+                        if (!startTime) startTime = currentTime;
+                        const elapsed = currentTime - startTime;
+                        let progress = Math.min(elapsed / duration, 1);
+
+                        // Easing функция (easeOutExpo) для AAA-плавности (тормозит под конец)
+                        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                        const current = easeProgress * target;
+
+                        if (isFloat) {
+                            counter.innerText = current.toFixed(1); // Рендерит 0.5, 1.2, 2.9
+                        } else {
+                            counter.innerText = Math.floor(current); // Рендерит 1500, 3000
+                        }
+
+                        if (progress < 1) {
                             requestAnimationFrame(updateCounter);
                         } else {
-                            counter.innerText = target;
+                            // Финальное запечатывание значения
+                            counter.innerText = isFloat ? target.toFixed(1) : target;
                         }
                     };
-                    updateCounter();
+                    requestAnimationFrame(updateCounter);
                 });
             }
         });
     }, { threshold: 0.5 });
+
     const statsSection = document.querySelector('.stats-wrapper');
     if (statsSection) statsObserver.observe(statsSection);
 
@@ -603,7 +620,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Инициализация после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initImageZoom);
     } else {
