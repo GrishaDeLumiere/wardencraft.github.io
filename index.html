@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="WardenCraft — фэнтезийная MMORPG на самописном Vulkan 1.3 движке и Java 25. Бесшовный мир, non-target бои, многопоточная загрузка (Project Loom) и тысячи FPS без просадок.">
-  <meta name="keywords" content="WardenCraft, MMORPG, фэнтези, игра, Vulkan, Vulkan 1.3, Java 25, Project Loom, FFM API, самописный движок, GPU-Driven Rendering, хардкор">
+  <meta name="keywords" content="WardenCraft, MMORPG, фэнтези, игра, Vulkan, Vulkan 1.3, Java 25, Project Loom, FFM API, самописный движок, GPU-Driven Rendering, хардкор, Bindless Texturing">
   <meta name="robots" content="index, follow">
   <meta name="author" content="WardenCraft Team">
   <link rel="canonical" href="https://grishadelumiere.github.io/wardencraft.github.io/">
@@ -37,6 +37,12 @@
             "@type": "Organization",
             "name": "WardenCraft Team"
           }
+        },
+        {
+          "@type": "NewsArticle",
+          "headline": "Dev Update: Bindless Texturing, 32-байтные вершины и компиляция лаунчера",
+          "datePublished": "2026-07-17",
+          "description": "Смерть легаси-атласам, архитектура Bindless Texturing на 65536 текстур, победа над шиной памяти и аппаратная компиляция лаунчера в V8-байткод. Перенос алгоритма отсечения невидимой геометрии (Frustum Culling) полностью на сторону графического процессора."
         },
         {
           "@type": "NewsArticle",
@@ -111,11 +117,13 @@
       <h1>WardenCraft - MMORPG на Vulkan</h1>
       <h2>ДОРОЖНАЯ КАРТА (ROADMAP)</h2>
       <p>ФАЗА 1: ФУНДАМЕНТ. Полный отказ от ванильного кода и Forge. Переход с LWJGL 2 на LWJGL 3.4.1 Core Profile, затем на Vulkan 1.3. Создание GPU-Driven пайплайна, написание своего сетевого стека на Netty (Zero-Overhead), матричный инвентарь, STB-шрифты.</p>
-      <p>ФАЗА 2: ГРАФОНИЙ И ПОЛИРОВКА ДВИЖКА. Каскадные тени Vulkan — готово. Волюметрическое небо — готово. Шейдеры сущностей и предметов — готово. Java 25 + FFM API — внедрено. В работе: Hi-Z Occlusion Culling, глобальный рефакторинг модуля декора и стресс-тесты ядра.</p>
+      <p>ФАЗА 2: ГРАФОНИЙ И ПОЛИРОВКА ДВИЖКА. Каскадные тени Vulkan — готово. Волюметрическое небо — готово. Шейдеры сущностей и предметов — готово. Bindless Texturing и 32-байтные вершины — готово. В работе: Hi-Z Occlusion Culling, глобальный рефакторинг модуля декора и стресс-тесты ядра.</p>
       <p>ФАЗА 3: БОЕВАЯ СИСТЕМА. Создание Non-Target боевой системы с серверной валидацией ударов, кастомными хитбоксами и системой скиллов.</p>
       <p>ФАЗА 4: NPC, КВЕСТЫ И ОТКРЫТЫЙ МИР. Заселение мира NPC с собственным Data-Driven движком. Диалоги, моральные выборы, система репутации.</p>
 
       <h2>ПОСЛЕДНИЕ НОВОСТИ И ОБНОВЛЕНИЯ</h2>
+      <h3>Dev Update: Bindless Texturing, 32-байтные вершины и компиляция лаунчера (2026-07-17)</h3>
+      <p>Смерть легаси-атласам, архитектура Bindless Texturing на 65536 текстур, победа над шиной памяти и аппаратная компиляция лаунчера в V8-байткод. Перенос алгоритма отсечения невидимой геометрии (Frustum Culling) полностью на сторону графического процессора.</p>
       <h3>ИТОГИ ДВУХ НЕДЕЛЬ: Технологическая Сингулярность и Переход на Vulkan 1.3 (2026-07-17)</h3>
       <p>Тотальный отказ от OpenGL. Внедрение Vulkan 1.3, GPU-Driven рендеринга и волюметрического неба. Переход ядра на современную Java 25, использование FFM API и Project Loom для многопоточной загрузки ассетов без фризов. Время кадра на процессоре снижено до рекордных 2.9 мс.</p>
       <h3>Dev Update: Тотальный редизайн лаунчера и переезд на современный API (2026-07-03)</h3>
@@ -229,7 +237,7 @@
           <h3>НЕКСТГЕН ГРАФИКА: ВОЛЮМЕТРИЧЕСКОЕ НЕБО</h3>
           <p>Мир дышит. Мы с нуля написали честное объемное освещение, систему многократного рассеивания света и реалистичные 3D-облака. Каскадные тени идеально ложатся на сложный рельеф, а погодные условия напрямую взаимодействуют с окружением, создавая неповторимую атмосферу темного фэнтези.</p>
         </div>
-        <div class="feature-image" style="background-image: url('images/2.jpg');"></div>
+        <div class="feature-image" style="background-image: url('images/3.jpg');"></div>
         <img src="images/3.jpg" alt="Объемное небо и графика мира WardenCraft" style="display:none;">
       </div>
 
@@ -250,7 +258,7 @@
           <p>Забудьте про тупое закликивание. Только точные уклонения, жесткие тайминги, парирования и контроль дистанции. Уникальный ИИ боссов ломает привычные тактики, меняя паттерны атак прямо в бою в зависимости от агрессии и поведения вашей группы.</p>
         </div>
         <div class="feature-image" style="background-image: url('images/4.jpg'); box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);"></div>
-        <img src="images/2.jpg" alt="Ночной пейзаж WardenCraft — под луной с продвинутой графикой" style="display:none;">
+        <img src="images/4.jpg" alt="Ночной пейзаж WardenCraft — под луной с продвинутой графикой" style="display:none;">
       </div>
 
       <!-- Блок 4: Экономика и крафт -->
@@ -260,7 +268,7 @@
           <p>Никакого мусорного лута, выпадающего тысячами. Девять тиров редкости от "Убогого" до "Божественного". Лучшую экипировку в игре нельзя выбить — её создают топовые кузнецы из редчайших ресурсов, добытых гильдиями в смертельно опасных локациях.</p>
         </div>
         <div class="feature-image" style="background-image: url('images/5.jpg');"></div>
-        <img src="images/0.jpg" alt="Величественная башня WardenCraft - символ гильдий" style="display:none;">
+        <img src="images/5.jpg" alt="Величественная башня WardenCraft - символ гильдий" style="display:none;">
       </div>
     </section>
 
