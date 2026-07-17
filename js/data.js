@@ -54,7 +54,7 @@ const WARDENCRAFT_NEWS = [
     date: "2026-07-17",
     image: "images/news5.jpg",
     title: "Dev Update: Bindless Texturing, 32-байтные вершины и компиляция лаунчера",
-    shortDesc: "Смерть легаси-атласам, архитектура Bindless Texturing на 65536 текстур, победа над шиной памяти и аппаратная компиляция 라унчера в V8-байткод...",
+    shortDesc: "Смерть легаси-атласам, архитектура Bindless Texturing на 65536 текстур, победа над шиной памяти и аппаратная компиляция Лаунчера в V8-байткод...",
     externalLink: "https://vk.ru/@wardencraft-devblog-6",
     telegramLink: "https://telegra.ph/WardenCraft---Dev-Update-Bindless-Texturing-32-bajtnye-vershiny-i-kompilyaciya-launchera-07-17",
     content: `
